@@ -141,11 +141,3 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
-
-
-tests
-
-.venv
-data
-doc
-tests

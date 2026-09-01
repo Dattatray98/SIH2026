@@ -1,0 +1,2 @@
+import React, { useEffect, useState } from "react";
+export default function ThinkingRow(){const [elapsed,setElapsed]=useState(0);useEffect(()=>{const start=Date.now();const id=setInterval(()=>setElapsed((Date.now()-start)/1000),100);return()=>clearInterval(id)},[]);return <div className="thinking"><span className="thinking-dot"/><div><b>Analyzing request…</b><small>Preparing the response · {elapsed.toFixed(1)}s</small></div><div className="sweep-track"><div className="sweep-bar"/></div></div>}
