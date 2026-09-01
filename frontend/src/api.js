@@ -1,6 +1,10 @@
+import axios from "axios";
+
+
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 const SESSIONS_KEY = "satquery.sessions";
 const CHAT_KEY = (id) => `satquery.chat.${id}`;
+
 
 export function fileToBase64(file) {
   return new Promise((resolve, reject) => {
@@ -12,11 +16,11 @@ export function fileToBase64(file) {
 }
 
 export async function analyze({ message, images }) {
-  const response = await fetch(`${API_URL}/api/analyze`, {
-    method: "POST",
+  const response = await fetch(`${API_URL}`, {
+    method: "GET",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      message,
+      prompt: message,
       images: images.map((img) => ({ name: img.name, media_type: img.mediaType, data: img.b64 })),
     }),
   });
@@ -24,6 +28,8 @@ export async function analyze({ message, images }) {
   if (!response.ok) throw new Error(data.detail || "Analysis request failed.");
   return data;
 }
+
+
 
 export function newChatId() {
   return `s_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
