@@ -1,9 +1,9 @@
 from fastapi import FastAPI # type: ignore
 from fastapi.middleware.cors import CORSMiddleware  #type: ignore
-from pydantic import BaseModel
+from pydantic import BaseModel # type: ignore
 
 import requests  # type: ignore
-import ollama
+import ollama # type: ignore
 
 app = FastAPI()
 
@@ -22,8 +22,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
 
 
 @app.get("/")
