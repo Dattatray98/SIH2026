@@ -1,0 +1,7 @@
+HF_MODEL_NAME = "BIFOLD-BigEarthNetv2-0/convmixer_768_32-s2-v0.2.0"
+
+HF_PROVIDER = "auto"
+
+HF_MAX_TOKENS = 512
+
+HF_TEMPERATURE = 0.2
