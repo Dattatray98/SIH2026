@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Paperclip, ArrowUp, X } from "lucide-react";
 import { ImageData } from "../types";
 
+// Defines the composer state and UI callbacks provided by the chat hook.
 interface ComposerProps {
   input: string;
   setInput: (val: string) => void;
@@ -12,6 +13,7 @@ interface ComposerProps {
   thinking: boolean;
 }
 
+// Render the text input, attachment preview, and submission controls.
 export default function Composer({
   input,
   setInput,
@@ -39,6 +41,7 @@ export default function Composer({
     }
   };
 
+  // Derive disabled states from the current attachment count and request status.
   const isAtLimit = pendingFiles.length >= 4;
   const isSendDisabled =
     thinking || (!input.trim() && pendingFiles.length === 0);

@@ -1,4 +1,5 @@
 {
+  // Type-check settings for React code that runs in the browser.
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
@@ -20,5 +21,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+  // Limits this configuration to application source files.
   "include": ["src"]
 }

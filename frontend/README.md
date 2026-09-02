@@ -20,17 +20,18 @@ VITE_API_URL=http://localhost:8000
 
 ```
 src/
-  ErrorBoundary.jsx     catches render errors, shows a visible panel instead of a blank page
-  main.jsx              entry point, wraps App in ErrorBoundary
-  api.js                fetch wrapper + localStorage chat history
+  ErrorBoundary.tsx      catches render errors, shows a visible panel instead of a blank page
+  main.tsx               entry point, wraps App in ErrorBoundary
+  api.ts                 HTTP wrapper + localStorage chat history
+  types.ts               shared TypeScript data models
   styles.css             Industrial visual system (flat, mono, one signal color)
-  App.jsx                top-level state, layout
+  App.tsx                top-level state and layout
   components/
-    Markdown.jsx          hand-rolled headers/bold/bullets renderer, no external dep
-    Sidebar.jsx            past-chats list
-    Message.jsx            one chat bubble + images + confidence/analysis_type meta
-    ThinkingRow.jsx         radar-sweep indicator with live elapsed timer
-    Composer.jsx            input box, file upload, send
+    Markdown.tsx         GitHub-Flavored Markdown renderer
+    Sidebar.tsx          past-chats list
+    Message.tsx          one chat bubble + images + response metadata
+    ThinkingRow.tsx      radar-sweep loading indicator
+    Composer.tsx         input box, file upload, send
 ```
 
 ## Known limitation

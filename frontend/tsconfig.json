@@ -1,4 +1,5 @@
 {
+  // Delegates browser and Vite configuration to focused project references.
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

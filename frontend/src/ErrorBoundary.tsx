@@ -1,5 +1,6 @@
-import React, { Component, ErrorInfo, ReactNode } from "react";
+import { Component, ErrorInfo, ReactNode } from "react";
 
+// Defines the content guarded by the boundary and the error it may capture.
 interface Props {
   children: ReactNode;
 }
@@ -8,19 +9,23 @@ interface State {
   error: Error | null;
 }
 
+// Prevents a rendering exception from leaving the user with a blank page.
 export default class ErrorBoundary extends Component<Props, State> {
   public override state: State = {
     error: null,
   };
 
+  // Convert a descendant render failure into state for the fallback interface.
   public static getDerivedStateFromError(error: Error): State {
     return { error };
   }
 
+  // Keep diagnostic details available to developers without exposing them in normal UI.
   public override componentDidCatch(error: Error, info: ErrorInfo): void {
     console.error("SatQuery AI crashed:", error, info?.componentStack);
   }
 
+  // Render either the protected app tree or the recoverable error screen.
   public override render(): ReactNode {
     if (this.state.error) {
       return (

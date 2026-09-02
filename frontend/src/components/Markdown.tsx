@@ -2,10 +2,12 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+// Allows callers to omit message text while a message is still being assembled.
 interface MarkdownProps {
   text?: string;
 }
 
+// Render GitHub-Flavored Markdown with safe links and SatQuery-specific code/image styles.
 export default function Markdown({ text }: MarkdownProps) {
   return (
     <div className="prose prose-invert max-w-none text-sat-text text-[13px] leading-[1.75]">

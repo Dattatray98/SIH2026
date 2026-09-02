@@ -2,6 +2,7 @@ import React from "react";
 import { Trash2, Satellite } from "lucide-react";
 import { Session } from "../types";
 
+// Defines the saved-session data and callbacks supplied by the application shell.
 interface SidebarProps {
   open: boolean;
   sessions: Session[];
@@ -10,6 +11,7 @@ interface SidebarProps {
   onDelete: (id: string) => void;
 }
 
+// Format recent sessions as a time and older sessions as a compact date.
 function formatWhen(ts: number): string {
   const d = new Date(ts);
   const now = new Date();
@@ -19,6 +21,7 @@ function formatWhen(ts: number): string {
     : d.toLocaleDateString([], { month: "short", day: "numeric" });
 }
 
+// Render the collapsible saved-conversation navigation panel.
 export default function Sidebar({
   open,
   sessions,
@@ -32,6 +35,7 @@ export default function Sidebar({
         open ? "w-[252px] border-r border-sat-border-soft" : "w-0"
       }`}
     >
+      {/* Product identity shown at the top of the sidebar. */}
       <div className="flex items-center gap-2 px-3 pt-4 pb-3 min-w-[252px]">
         <div className="w-7 h-7 flex items-center justify-center bg-sat-signal-dim border border-sat-border text-sat-signal shrink-0">
           <Satellite size={14} />
@@ -45,6 +49,7 @@ export default function Sidebar({
         Past chats
       </div>
 
+      {/* Scrollable session list, with selection and deletion actions. */}
       <div className="flex-1 overflow-y-auto px-2 min-w-[252px]">
         {sessions.length === 0 && (
           <div className="text-xs text-sat-faint px-[10px] py-2 leading-relaxed">

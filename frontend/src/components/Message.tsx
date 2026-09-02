@@ -3,11 +3,13 @@ import Markdown from "./Markdown";
 import { Bot } from "lucide-react";
 import { ChatMessage, ImageData } from "../types";
 
+// Describes a labelled collection of image thumbnails attached to a message.
 interface ImageStripProps {
   images: ImageData[];
   label: string;
 }
 
+// Render uploaded imagery or backend evidence as a compact thumbnail strip.
 function ImageStrip({ images, label }: ImageStripProps) {
   if (!images?.length) return null;
 
@@ -35,16 +37,18 @@ function ImageStrip({ images, label }: ImageStripProps) {
   );
 }
 
+// Defines the message record rendered by one conversation row.
 interface MessageProps {
   message: ChatMessage;
 }
 
+// Render user and assistant messages with their applicable metadata and attachments.
 export default function Message({ message }: MessageProps) {
   const isAssistant = message.role === "assistant";
 
   return (
     <article
-      className={`w-full max-w-[1000px] mx-auto mb-7 ${
+      className={`w-full max-w-[95vh] mx-auto mb-7 ${
         isAssistant
           ? "grid grid-cols-[30px_minmax(0,1fr)] gap-3 items-start"
           : "flex flex-row justify-end"
@@ -64,7 +68,7 @@ export default function Message({ message }: MessageProps) {
         }`}
       >
         {/* Author Header metadata */}
-        <div className="h-[30px] flex items-center gap-[7px] text-sat-faint text-[9px] font-mono tracking-[0.08em] uppercase">
+        <div className="h-[30px] flex items-center gap-[7px] text-sat-faint text-[10px] font-mono tracking-[0.08em] uppercase">
           <span>{isAssistant ? "SATQUERY AI" : "YOU"}</span>
           {message.meta?.analysis_type && (
             <span className="px-[6px] py-[3px] border border-sat-border text-[#9b9b88] normal-case tracking-normal">

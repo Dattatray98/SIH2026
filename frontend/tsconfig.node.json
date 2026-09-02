@@ -1,4 +1,5 @@
 {
+  // Type-check settings for Vite's Node-side configuration file.
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["ES2022"],
@@ -18,5 +19,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+  // Limits this configuration to the build-tool configuration.
   "include": ["vite.config.ts"]
 }

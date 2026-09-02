@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function ThinkingRow() {
+  // Stores the elapsed duration shown while the analysis request is pending.
   const [elapsed, setElapsed] = useState<number>(0);
 
   // Tracks precise elapsed execution time in seconds
@@ -13,6 +14,7 @@ export default function ThinkingRow() {
     return () => clearInterval(id);
   }, []);
 
+  // Render the status copy and the animated progress sweep.
   return (
     <div className="flex flex-col gap-[6px] w-[min(280px,100%)] ml-auto self-end font-mono">
       <div className="flex items-center justify-end gap-2 text-right text-[12px] text-sat-muted">
