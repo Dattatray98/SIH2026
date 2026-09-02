@@ -16,17 +16,15 @@ export function fileToBase64(file) {
 }
 
 export async function analyze({ message, images }) {
-  const response = await fetch(`${API_URL}`, {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
+  try {
+    const { data } = await axios.post(API_URL, {
       prompt: message,
       images: images.map((img) => ({ name: img.name, media_type: img.mediaType, data: img.b64 })),
-    }),
-  });
-  const data = await response.json();
-  if (!response.ok) throw new Error(data.detail || "Analysis request failed.");
-  return data;
+    });
+    return data;
+  } catch (err) {
+    throw new Error(err.response?.data?.detail || err.message);
+  }
 }
 
 
