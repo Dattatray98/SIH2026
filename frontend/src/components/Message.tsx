@@ -1,4 +1,3 @@
-import React from "react";
 import Markdown from "./Markdown";
 import { Bot } from "lucide-react";
 import { ChatMessage, ImageData } from "../types";
