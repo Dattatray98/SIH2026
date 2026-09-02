@@ -64,16 +64,20 @@ class input_field(BaseModel):
 
 @app.post("/ollama/ai")
 def response_ollama(data:input_field):
-    print(data)
+    try:
+        print(data)
 
-    print("prompt : ", data.prompt)
+        print("prompt : ", data.prompt)
 
-    response = ollama.generate(
-        model="llama3",
-        prompt=data.prompt
-    )
+        response = ollama.generate(
+            model="llama3",
+            prompt=data.prompt
+        )
 
-    print("response : ", response.response)
-    return {
-        "answer":response.response
-    }
+        print("response : ", response.response)
+        return {
+            "answer":response.response
+        }
+
+    except Exception as e:
+        print("error : ", e)

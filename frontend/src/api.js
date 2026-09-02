@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/ollama/ai";
 const SESSIONS_KEY = "satquery.sessions";
 const CHAT_KEY = (id) => `satquery.chat.${id}`;
 
@@ -16,6 +16,7 @@ export function fileToBase64(file) {
 }
 
 export async function analyze({ message, images }) {
+  console.log(message)
   try {
     const { data } = await axios.post(API_URL, {
       prompt: message,

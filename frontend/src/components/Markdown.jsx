@@ -8,13 +8,36 @@ export default function Markdown({ text }) {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          a: ({node, ...props}) => <a {...props} target="_blank" rel="noreferrer" />,
-          img: ({node, ...props}) => <figure className="md-image"><img {...props} loading="lazy" /><figcaption>{props.alt || "Evidence image"}</figcaption></figure>,
-          code: ({inline, className, children, ...props}) => inline
-            ? <code className="inline-code" {...props}>{children}</code>
-            : <pre className="code-block"><code className={className} {...props}>{children}</code></pre>,
+          // Render links securely in a new browser tab
+          a: ({ node, ...props }) => (
+            <a {...props} target="_blank" rel="noreferrer" />
+          ),
+
+          // Wrap standalone markdown images in semantic figure markup
+          img: ({ node, ...props }) => (
+            <figure className="md-image">
+              <img {...props} loading="lazy" alt={props.alt || "Evidence"} />
+              <figcaption>{props.alt || "Evidence image"}</figcaption>
+            </figure>
+          ),
+
+          // Handle custom styling for inline code versus block formatting
+          code: ({ inline, className, children, ...props }) =>
+            inline ? (
+              <code className="inline-code" {...props}>
+                {children}
+              </code>
+            ) : (
+              <pre className="code-block">
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              </pre>
+            ),
         }}
-      >{text || ""}</ReactMarkdown>
+      >
+        {text || ""}
+      </ReactMarkdown>
     </div>
   );
 }
